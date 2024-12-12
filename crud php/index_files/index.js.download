@@ -1,0 +1,72 @@
+// function crud_adarsh() {
+//   let a = document.getElementById("tital").value;
+//   let b = document.getElementById("description").value;
+
+//   let add = true;
+
+//   if (!a.trim()) {
+//     alert("Please enter your Tital.")(a);
+//     add = false;
+//   }
+//   if (!b.trim()) {
+//     alert("Please enter your description.");
+//     add = false;
+//   }
+//   return add;
+// }
+
+function crud_adarsh() {
+    clearErrors();
+    let tital = document.getElementById('tital').value.trim();
+    let description = document.getElementById('description').value.trim();
+    
+  
+    // Validate each field
+    if (tital === '') {
+        showError( '','titalError', 'tital');
+        return false;
+    }
+    if (description === '') {
+        showError('', 'titalError', 'description');
+        return false;
+    }
+ 
+  }
+  
+  
+  
+  
+  function showError(errorMessage, errorElementId, inputId) {
+    const inputElement = document.getElementById(inputId);
+    inputElement.focus();
+  
+    inputElement.style.border = " 2px solid red";
+  
+    const errorElement = document.createElement('span');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('error-message');
+  
+    const parentElement = inputElement.parentNode;
+    parentElement.insertBefore(errorElement, inputElement.nextSibling);
+  
+    inputElement.classList.add('error');
+  }
+  
+
+  
+  function clearErrors() {
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach((error) => error.parentNode.removeChild(error));
+  
+    const errorFields = document.querySelectorAll(".error");
+    errorFields.forEach((field) => {
+        field.classList.remove("error");
+        const inputId = field.id;
+        document.getElementById(inputId).style.border = "";
+  
+    });
+  
+  
+  }
+  
+  
